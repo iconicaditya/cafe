@@ -5,22 +5,34 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
-const HERO_IMAGES = [
+const HERO_SLIDES = [
   {
-    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=85",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=85",
     alt: "Velvet Brew - Premium fine dining cafe interior with elegant ambiance",
+    badge: "Since 2014 · Kathmandu",
+    heading: "Where Every Cup Tells\na Story",
+    subtext: "Handcrafted coffee, artisan pastries, and a warm sanctuary designed for those who appreciate the beauty of slow mornings.",
   },
   {
-    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85",
     alt: "Velvet Brew - Luxury restaurant lounge with sophisticated decor",
+    badge: "Premium Ambiance · Unforgettable Moments",
+    heading: "A Sanctuary of\nElegance & Flavor",
+    subtext: "Step into a world where sophisticated design meets culinary artistry. Every detail curated for your comfort.",
   },
   {
-    src: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1920&q=85",
+    image: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1920&q=85",
     alt: "Velvet Brew - High-end cafe bar with premium wood and marble finishes",
+    badge: "Artisan Craft · Exceptional Taste",
+    heading: "Crafted by Passion,\nServed with Pride",
+    subtext: "From our master baristas to your table — experience the finest single-origin brews and handcrafted delicacies.",
   },
   {
-    src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=85",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=85",
     alt: "Velvet Brew - Exclusive rooftop cafe terrace with city skyline views",
+    badge: "Rooftop Views · City Lights",
+    heading: "Dine Above the\nCity Lights",
+    subtext: "Our exclusive rooftop terrace offers breathtaking panoramic views, perfect for intimate gatherings and special evenings.",
   },
 ];
 
@@ -32,10 +44,12 @@ export default function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
+  const current = HERO_SLIDES[currentIndex];
+
   // Auto-cycle images
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+      setCurrentIndex((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -61,8 +75,8 @@ export default function Hero() {
             className="absolute inset-0"
           >
             <Image
-              src={HERO_IMAGES[currentIndex].src}
-              alt={HERO_IMAGES[currentIndex].alt}
+              src={current.image}
+              alt={current.alt}
               fill
               priority
               className="object-cover"
@@ -96,7 +110,7 @@ export default function Hero() {
 
       {/* Image navigation dots */}
       <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-        {HERO_IMAGES.map((_, index) => (
+        {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
@@ -121,6 +135,7 @@ export default function Hero() {
       >
         {/* Badge */}
         <motion.div
+          key={`badge-${currentIndex}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -128,33 +143,38 @@ export default function Hero() {
         >
           <span className="w-10 h-px bg-cafe-gold" />
           <span className="font-inter text-cafe-gold text-sm font-semibold tracking-[0.18em] uppercase">
-            Since 2014 · Kathmandu
+            {current.badge}
           </span>
           <span className="w-10 h-px bg-cafe-gold" />
         </motion.div>
 
         {/* Heading */}
         <motion.h1
+          key={`heading-${currentIndex}`}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.35 }}
           className="font-playfair font-bold text-white
             text-[clamp(2.4rem,7vw,4.5rem)] leading-[1.1] mb-6"
         >
-          Where Every Cup Tells
-          <br />a Story
+          {current.heading.split("\n").map((line, i) => (
+            <span key={i}>
+              {line}
+              {i === 0 && <br />}
+            </span>
+          ))}
         </motion.h1>
 
         {/* Subtext */}
         <motion.p
+          key={`subtext-${currentIndex}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="font-inter text-white/80 text-[clamp(1rem,2vw,1.25rem)]
             leading-relaxed max-w-xl mx-auto mb-10"
         >
-          Handcrafted coffee, artisan pastries, and a warm sanctuary designed
-          for those who appreciate the beauty of slow mornings.
+          {current.subtext}
         </motion.p>
 
         {/* CTA buttons */}
