@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   shadcn / Radix token layer (kept intact)
+───────────────────────────────────────── */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.75rem;
+}
+
+/* ─────────────────────────────────────────
+   Global base
+───────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border box-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    background-color: #FFFFFF;
+    color: #0F0F0F;
+    font-family: var(--font-inter), sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    line-height: 1.2;
+    color: #1D1D1D;
+  }
+  ::selection {
+    background-color: #E8E8E8;
+    color: #0A0A0A;
+  }
+}
+
+/* ─────────────────────────────────────────
+   Utility classes
+───────────────────────────────────────── */
+@layer utilities {
+  /* Section wrapper */
+  .section-pad {
+    @apply py-24 md:py-28 lg:py-32;
+  }
+  .content-wrap {
+    @apply max-w-content mx-auto px-5 md:px-10 lg:px-20;
+  }
+
+  /* Section label pill */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-cafe-gold uppercase tracking-[0.12em] text-sm font-semibold font-inter mb-4;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-8 h-px bg-cafe-gold;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply font-playfair text-4xl md:text-5xl text-cafe-text leading-tight;
+  }
+  .section-subtext {
+    @apply text-cafe-text-secondary text-lg leading-relaxed max-w-xl;
+  }
+
+  /* Premium buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-cafe-brown-dark text-white px-8 py-4 rounded-none
+           text-base font-semibold font-inter tracking-wide
+           transition-all duration-300 ease-out
+           hover:bg-cafe-brown hover:-translate-y-0.5 hover:shadow-soft-lg
+           active:translate-y-0;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 bg-transparent text-cafe-brown-dark
+           border-2 border-cafe-brown-dark px-8 py-4 rounded-none
+           text-base font-semibold font-inter tracking-wide
+           transition-all duration-300 ease-out
+           hover:bg-cafe-brown-dark hover:text-white hover:-translate-y-0.5 hover:shadow-soft-lg
+           active:translate-y-0;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 bg-transparent text-white
+           border-2 border-white/60 px-8 py-4 rounded-none
+           text-base font-semibold font-inter tracking-wide
+           transition-all duration-300 ease-out
+           hover:bg-white hover:text-cafe-brown-dark hover:-translate-y-0.5
+           active:translate-y-0;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-cafe-gold text-white px-8 py-4 rounded-none
+           text-base font-semibold font-inter tracking-wide
+           transition-all duration-300 ease-out
+           hover:brightness-110 hover:-translate-y-0.5 hover:shadow-gold
+           active:translate-y-0;
+  }
+
+  /* Card base */
+  .card-hover {
+    @apply transition-all duration-300 ease-out
+           hover:-translate-y-1 hover:shadow-soft-lg;
+  }
+
+  /* Soft divider */
+  .divider {
+    @apply border-t border-cafe-border;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar        { width: 6px; }
+  ::-webkit-scrollbar-track  { background: #FAF7F3; }
+  ::-webkit-scrollbar-thumb  { background: #D0D0D0; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #888888; }
+}
+
+/* ─────────────────────────────────────────
+   Swiper overrides
+───────────────────────────────────────── */
+.swiper-pagination-bullet {
+  background: #E6D6C7 !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #B88A44 !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #3B2418 !important;
+}
+
+/* ─────────────────────────────────────────
+   Lightbox overlay
+───────────────────────────────────────── */
+.lightbox-overlay {
+  @apply fixed inset-0 z-[200] bg-black/90 flex items-center justify-center;
+  backdrop-filter: blur(4px);
+}
+
+/* ─────────────────────────────────────────
+   Loading screen
+───────────────────────────────────────── */
+.loading-screen {
+  @apply fixed inset-0 z-[300] bg-cafe-brown-dark flex flex-col items-center justify-center;
+}
+
+/* ─────────────────────────────────────────
+   Floating label inputs
+───────────────────────────────────────── */
+.float-label-group {
+  @apply relative;
+}
+.float-label-group input,
+.float-label-group textarea,
+.float-label-group select {
+  @apply w-full bg-transparent border border-cafe-border px-5 py-4 pt-6
+         text-cafe-text text-base font-inter outline-none
+         transition-all duration-200
+         focus:border-cafe-gold focus:ring-2 focus:ring-cafe-gold/20
+         placeholder-transparent;
+}
+.float-label-group label {
+  @apply absolute left-5 top-5 text-cafe-text-muted text-sm font-inter
+         transition-all duration-200 pointer-events-none origin-left;
+}
+.float-label-group input:focus ~ label,
+.float-label-group input:not(:placeholder-shown) ~ label,
+.float-label-group textarea:focus ~ label,
+.float-label-group textarea:not(:placeholder-shown) ~ label {
+  @apply top-2 text-xs text-cafe-gold scale-90;
+}
