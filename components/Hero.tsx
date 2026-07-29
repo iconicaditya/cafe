@@ -7,20 +7,20 @@ import { ArrowDown } from "lucide-react";
 
 const HERO_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=85",
-    alt: "Velvet Brew premium cafe exterior with warm golden hour lighting",
+    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=85",
+    alt: "Velvet Brew - Premium fine dining cafe interior with elegant ambiance",
   },
   {
-    src: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=1920&q=85",
-    alt: "Elegant barista crafting artisanal coffee at marble counter",
+    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=85",
+    alt: "Velvet Brew - Luxury restaurant lounge with sophisticated decor",
   },
   {
-    src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1920&q=85",
-    alt: "Sophisticated cafe interior with ambient lighting and premium decor",
+    src: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1920&q=85",
+    alt: "Velvet Brew - High-end cafe bar with premium wood and marble finishes",
   },
   {
-    src: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1920&q=85",
-    alt: "Artisan coffee brewing experience in luxury setting",
+    src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=85",
+    alt: "Velvet Brew - Exclusive rooftop cafe terrace with city skyline views",
   },
 ];
 
