@@ -16,7 +16,7 @@ export const FEATURED_COFFEES = [
     name: "Signature Velvet Latte",
     description:
       "Our house-crafted espresso blend meets silky steamed milk and a whisper of vanilla — the drink that started it all.",
-    price: "$7.50",
+    price: "NPR 550",
     tag: "House Favourite",
     image:
       "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80",
@@ -26,7 +26,7 @@ export const FEATURED_COFFEES = [
     name: "Single-Origin Espresso",
     description:
       "Pulled from Ethiopian Yirgacheffe beans roasted in small batches. Bold, bright, and beautifully complex.",
-    price: "$5.00",
+    price: "NPR 380",
     tag: "Origin Reserve",
     image:
       "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
@@ -36,7 +36,7 @@ export const FEATURED_COFFEES = [
     name: "Honey Oat Flat White",
     description:
       "Creamy oat milk, raw wildflower honey, and a double ristretto shot. Rich, sweet, and utterly smooth.",
-    price: "$8.00",
+    price: "NPR 620",
     tag: "Seasonal Pick",
     image:
       "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80",
@@ -49,7 +49,7 @@ export const SIGNATURE_DRINKS = [
     category: "Espresso",
     name: "Classic Americano",
     description: "Two shots of rich espresso diluted with hot water for a clean, bold cup.",
-    price: "$4.50",
+    price: "NPR 350",
     image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -57,7 +57,7 @@ export const SIGNATURE_DRINKS = [
     category: "Latte",
     name: "Caramel Macchiato",
     description: "Vanilla-infused milk, espresso, and a drizzle of artisan caramel.",
-    price: "$7.00",
+    price: "NPR 520",
     image: "https://images.unsplash.com/photo-1485808191679-5f86510bd9d4?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -65,7 +65,7 @@ export const SIGNATURE_DRINKS = [
     category: "Cold Brew",
     name: "Nitro Cold Brew",
     description: "24-hour steeped cold brew infused with nitrogen for a creamy, velvety texture.",
-    price: "$8.50",
+    price: "NPR 650",
     image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -73,7 +73,7 @@ export const SIGNATURE_DRINKS = [
     category: "Specialty",
     name: "Rose Cardamom Latte",
     description: "Delicate rose water, warming cardamom, and our house espresso blend.",
-    price: "$9.00",
+    price: "NPR 580",
     image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -81,7 +81,7 @@ export const SIGNATURE_DRINKS = [
     category: "Espresso",
     name: "Doppio Ristretto",
     description: "A concentrated double shot of espresso that captures the full complexity of the bean.",
-    price: "$5.50",
+    price: "NPR 420",
     image: "https://images.unsplash.com/photo-1574914629385-46448b0aeec9?auto=format&fit=crop&w=600&q=80",
   },
   {
@@ -89,7 +89,7 @@ export const SIGNATURE_DRINKS = [
     category: "Cold Brew",
     name: "Iced Vanilla Brew",
     description: "Slow-brewed coffee over ice with house-made vanilla syrup and cream.",
-    price: "$7.50",
+    price: "NPR 580",
     image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80",
   },
 ];
@@ -157,7 +157,7 @@ export const BEST_SELLERS = [
     id: 1,
     name: "Velvet Espresso",
     category: "Espresso",
-    price: "$5.00",
+    price: "NPR 380",
     rating: 4.9,
     reviews: 312,
     image: "https://images.unsplash.com/photo-1574914629385-46448b0aeec9?auto=format&fit=crop&w=600&q=80",
@@ -167,7 +167,7 @@ export const BEST_SELLERS = [
     id: 2,
     name: "Almond Croissant",
     category: "Pastry",
-    price: "$6.00",
+    price: "NPR 450",
     rating: 4.8,
     reviews: 204,
     image: "https://images.unsplash.com/photo-1586816001966-79b736744398?auto=format&fit=crop&w=600&q=80",
@@ -177,7 +177,7 @@ export const BEST_SELLERS = [
     id: 3,
     name: "Avocado Toast",
     category: "Food",
-    price: "$12.00",
+    price: "NPR 890",
     rating: 4.7,
     reviews: 178,
     image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c820?auto=format&fit=crop&w=600&q=80",
@@ -187,7 +187,7 @@ export const BEST_SELLERS = [
     id: 4,
     name: "Chai Spice Latte",
     category: "Latte",
-    price: "$7.50",
+    price: "NPR 480",
     rating: 4.8,
     reviews: 267,
     image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=600&q=80",
