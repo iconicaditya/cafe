@@ -1,16 +1,44 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+
+const HERO_IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80",
+    alt: "Modern cafe building exterior with warm lighting",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1920&q=80",
+    alt: "Luxury cafe with outdoor swimming pool and lounge",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80",
+    alt: "Elegant restaurant building with poolside seating",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80",
+    alt: "Premium resort cafe with infinity pool view",
+  },
+];
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
+  // Auto-cycle images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -18,27 +46,73 @@ export default function Hero() {
       ref={ref}
       className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
     >
-      {/* Parallax background */}
+      {/* Parallax background with crossfade slideshow */}
       <motion.div
         style={{ y: bgY }}
         className="absolute inset-0 z-0 scale-110"
       >
-        <Image
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80"
-          alt="Velvet Brew cafe interior"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={HERO_IMAGES[currentIndex].src}
+              alt={HERO_IMAGES[currentIndex].alt}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+
+        {/* Subtle color overlay that shifts per image */}
+        <motion.div
+          key={`overlay-${currentIndex}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.15 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0"
+          style={{
+            background: currentIndex % 2 === 0
+              ? "linear-gradient(135deg, rgba(180, 120, 60, 0.3), transparent)"
+              : "linear-gradient(135deg, rgba(60, 120, 180, 0.3), transparent)",
+          }}
         />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/60" />
       </motion.div>
 
       {/* Floating texture grain (subtle) */}
       <div className="absolute inset-0 z-[1] opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "200px" }}
       />
+
+      {/* Image navigation dots */}
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        {HERO_IMAGES.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className="group relative"
+            aria-label={`Go to slide ${index + 1}`}
+          >
+            <div
+              className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
+                index === currentIndex
+                  ? "w-10 bg-cafe-gold"
+                  : "w-1.5 bg-white/40 group-hover:bg-white/70 group-hover:w-3"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
 
       {/* Content */}
       <motion.div
