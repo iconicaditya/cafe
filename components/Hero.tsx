@@ -7,20 +7,20 @@ import { ArrowDown } from "lucide-react";
 
 const HERO_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80",
-    alt: "Modern cafe building exterior with warm lighting",
+    src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=85",
+    alt: "Velvet Brew premium cafe exterior with warm golden hour lighting",
   },
   {
-    src: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1920&q=80",
-    alt: "Luxury cafe with outdoor swimming pool and lounge",
+    src: "https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=1920&q=85",
+    alt: "Elegant barista crafting artisanal coffee at marble counter",
   },
   {
-    src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1920&q=80",
-    alt: "Elegant restaurant building with poolside seating",
+    src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1920&q=85",
+    alt: "Sophisticated cafe interior with ambient lighting and premium decor",
   },
   {
-    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80",
-    alt: "Premium resort cafe with infinity pool view",
+    src: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1920&q=85",
+    alt: "Artisan coffee brewing experience in luxury setting",
   },
 ];
 
